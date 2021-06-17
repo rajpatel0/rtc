@@ -22,3 +22,11 @@ func IsVector(tup Tuple) bool {
 func Equal(a, b float64) bool {
 	return math.Abs(a-b) < Epsilon
 }
+
+func Vector(x, y, z float64) Tuple {
+	return Tuple{x, y, z, 1.0}
+}
+
+func Point(x, y, z float64) Tuple {
+	return Tuple{x, y, z, 0.0}
+}
