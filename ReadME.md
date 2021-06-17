@@ -1,0 +1,1 @@
+My attempt at the Ray tracer challenge and learning Go along with it.
