@@ -75,3 +75,11 @@ func TestVectorCreator(t *testing.T) {
 		t.Errorf("A point is not a vector")
 	}
 }
+
+func TestEqualTuple(t *testing.T) {
+	vector := Vector(3.3, 2.2, 1.1)
+	vector2 := Vector(3.3, 2.2, 1.1)
+	if !EqualTuple(vector, vector2) {
+		t.Errorf("Not equivelent vectors")
+	}
+}
