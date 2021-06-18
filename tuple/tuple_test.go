@@ -83,3 +83,29 @@ func TestEqualTuple(t *testing.T) {
 		t.Errorf("Not equivelent vectors")
 	}
 }
+
+func TestAddTuple(t *testing.T) {
+	vector := Vector(3.3, 2.2, 1.1)
+	vector1 := Vector(2.2, 1.1, 1.1)
+	point := Point(1.0, 1.0, 1.0)
+	addedVec := AddTuple(vector, vector1)
+	addedPV := AddTuple(vector, point)
+	switch {
+	case !Equal(addedVec.X, 5.5):
+		t.Errorf("Vector addition mistake")
+	case !Equal(addedVec.Y, 3.3):
+		t.Errorf("Vector addition mistake")
+	case !Equal(addedVec.Z, 2.2):
+		t.Errorf("Vector addition mistake")
+	case !Equal(addedVec.W, 0.0):
+		t.Errorf("Vector addition mistake")
+	case !Equal(addedPV.X, 4.3):
+		t.Errorf("Vector, Point addition mistake")
+	case !Equal(addedPV.Y, 3.2):
+		t.Errorf("Vector, Point addition mistake")
+	case !Equal(addedPV.Z, 2.1):
+		t.Errorf("Vector, Point addition mistake")
+	case !Equal(addedPV.W, 1.0):
+		t.Errorf("Vector, Point addition mistake")
+	}
+}
