@@ -18,16 +18,17 @@ jobs:
       run: |
         go version
         go get -u golang.org/x/lint/golint
-        
-    - name: Build
-      run: |
-        go build .
+
+    # - name: Build
+    #   run: |
+    #     go build .
        
-    - name: Run vet & lint
-      run: |
-        go vet .
-        golint .
+    # - name: Run vet & lint
+    #   run: |
+    #     go vet .
+    #     golint .
 
     - name: Run test
-      run: go test . 
+      run: |
+        go test tuple/* 
       
