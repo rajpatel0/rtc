@@ -12,11 +12,11 @@ type Tuple struct {
 }
 
 func IsPoint(tup Tuple) bool {
-	return Equal(tup.W, 0.0)
+	return Equal(tup.W, 1.0)
 }
 
 func IsVector(tup Tuple) bool {
-	return Equal(tup.W, 1.0)
+	return Equal(tup.W, 0.0)
 }
 
 func Equal(a, b float64) bool {
@@ -24,11 +24,11 @@ func Equal(a, b float64) bool {
 }
 
 func Vector(x, y, z float64) Tuple {
-	return Tuple{x, y, z, 1.0}
+	return Tuple{x, y, z, 0.0}
 }
 
 func Point(x, y, z float64) Tuple {
-	return Tuple{x, y, z, 0.0}
+	return Tuple{x, y, z, 1.0}
 }
 
 func EqualTuple(tup1, tup2 Tuple) bool {

@@ -5,7 +5,7 @@ import (
 )
 
 func TestPoint(t *testing.T) {
-	point := Tuple{3.3, 2.2, 1.1, 0.0}
+	point := Tuple{3.3, 2.2, 1.1, 1.0}
 	switch {
 	case !Equal(point.X, 3.3):
 		t.Errorf("Point Construction mistake")
@@ -13,7 +13,7 @@ func TestPoint(t *testing.T) {
 		t.Errorf("Point Construction mistake")
 	case !Equal(point.Z, 1.1):
 		t.Errorf("Point Construction mistake")
-	case !Equal(point.W, 0.0):
+	case !Equal(point.W, 1.0):
 		t.Errorf("Point Construction mistake")
 	case !IsPoint(point):
 		t.Errorf("Not a point")
@@ -23,7 +23,7 @@ func TestPoint(t *testing.T) {
 }
 
 func TestVector(t *testing.T) {
-	vector := Tuple{3.3, 2.2, 1.1, 1.0}
+	vector := Tuple{3.3, 2.2, 1.1, 0.0}
 	switch {
 	case !Equal(vector.X, 3.3):
 		t.Errorf("Vector Construction mistake")
@@ -31,7 +31,7 @@ func TestVector(t *testing.T) {
 		t.Errorf("Vector Construction mistake")
 	case !Equal(vector.Z, 1.1):
 		t.Errorf("Vector Construction mistake")
-	case !Equal(vector.W, 1.0):
+	case !Equal(vector.W, 0.0):
 		t.Errorf("Vector Construction mistake")
 	case !IsVector(vector):
 		t.Errorf("Not a vector")
@@ -49,7 +49,7 @@ func TestPointCreator(t *testing.T) {
 		t.Errorf("Point Construction mistake")
 	case !Equal(point.Z, 1.1):
 		t.Errorf("Point Construction mistake")
-	case !Equal(point.W, 0.0):
+	case !Equal(point.W, 1.0):
 		t.Errorf("Point Construction mistake")
 	case !IsPoint(point):
 		t.Errorf("Not a point")
@@ -67,7 +67,7 @@ func TestVectorCreator(t *testing.T) {
 		t.Errorf("Vector Construction mistake")
 	case !Equal(vector.Z, 1.1):
 		t.Errorf("Vector Construction mistake")
-	case !Equal(vector.W, 1.0):
+	case !Equal(vector.W, 0.0):
 		t.Errorf("Vector Construction mistake")
 	case !IsVector(vector):
 		t.Errorf("Not a vector")
