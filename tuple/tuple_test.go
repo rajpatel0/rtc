@@ -109,3 +109,21 @@ func TestAddTuple(t *testing.T) {
 		t.Errorf("Vector, Point addition mistake")
 	}
 }
+
+func TestSubTuple(t *testing.T) {
+	vector := Vector(3.3, 2.2, 1.1)
+	vector1 := Vector(2.2, 1.1, 1.1)
+	point := Point(1.0, 1.0, 1.0)
+	point1 := Point(1.0, 1.0, 1.0)
+	subPoint := SubTuple(point, point1)
+	subPV := SubTuple(point, vector)
+	subVector := SubTuple(vector, vector1)
+	switch {
+	case !EqualTuple(subPoint, Vector(0, 0, 0)):
+		t.Errorf("Error subtracting points")
+	case !EqualTuple(subPV, Point(-2.3, -1.2, -0.1)):
+		t.Errorf("Error subracting vector from point")
+	case !EqualTuple(subVector, Vector(1.1, 1.1, 0.0)):
+		t.Errorf("Error subtracting vectors")
+	}
+}
