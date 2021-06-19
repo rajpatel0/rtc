@@ -56,3 +56,12 @@ func MultiplyScaler(tup1 Tuple, a float64) Tuple {
 func DivideScaler(tup1 Tuple, a float64) Tuple {
 	return Tuple{tup1.X / a, tup1.Y / a, tup1.Z / a, tup1.W / a}
 }
+
+func Magnitude(tup1 Tuple) float64 {
+	return math.Sqrt(tup1.X*tup1.X + tup1.Y*tup1.Y + tup1.Z*tup1.Z + tup1.W*tup1.W)
+}
+
+func Normalize(tup1 Tuple) Tuple {
+	mag := Magnitude(tup1)
+	return DivideScaler(tup1, mag)
+}

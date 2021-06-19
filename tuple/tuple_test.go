@@ -1,6 +1,7 @@
 package tuple
 
 import (
+	"math"
 	"testing"
 )
 
@@ -148,5 +149,38 @@ func TestDivTuple(t *testing.T) {
 	a := 2.0
 	if !EqualTuple(DivideScaler(tup, a), Tuple{0.5, -1, 1.5, -2}) {
 		t.Errorf("Division Failed")
+	}
+}
+
+func TestMagnitude(t *testing.T) {
+	vector := Vector(1, 0, 0)
+	vector1 := Vector(0, 1, 0)
+	vector2 := Vector(0, 0, 1)
+	vector3 := Vector(1, 2, 3)
+	vector4 := Vector(-1, -2, -3)
+
+	switch {
+	case !Equal(Magnitude(vector), 1.0):
+		t.Errorf("Magnitude Calc failed")
+	case !Equal(Magnitude(vector1), 1.0):
+		t.Errorf("Magnitude Calc failed")
+	case !Equal(Magnitude(vector2), 1.0):
+		t.Errorf("Magnitude Calc failed")
+	case !Equal(Magnitude(vector3), math.Sqrt(14.0)):
+		t.Errorf("Magnitude Calc failed")
+	case !Equal(Magnitude(vector4), math.Sqrt(14.0)):
+		t.Errorf("Magnitude Calc failed")
+	}
+}
+
+func TestNormalize(t *testing.T) {
+	vector := Vector(4, 0, 0)
+	vector1 := Vector(1, 2, 3)
+
+	switch {
+	case Equal(Magnitude(Normalize(vector1)), 1.0):
+		t.Errorf("The magnitude of a normalized vector isn't 1")
+	case EqualTuple(Normalize(vector), Vector(1, 0, 0)):
+		t.Errorf("Normalization of the vector failed")
 	}
 }
