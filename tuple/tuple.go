@@ -43,5 +43,16 @@ func AddTuple(tup1, tup2 Tuple) Tuple {
 
 func SubTuple(tup1, tup2 Tuple) Tuple {
 	return Tuple{tup1.X - tup2.X, tup1.Y - tup2.Y, tup1.Z - tup2.Z, tup1.W - tup2.W}
+}
 
+func NegateTuple(tup1 Tuple) Tuple {
+	return Tuple{-tup1.X, -tup1.Y, -tup1.Z, -tup1.W}
+}
+
+func MultiplyScaler(tup1 Tuple, a float64) Tuple {
+	return Tuple{tup1.X * a, tup1.Y * a, tup1.Z * a, tup1.W * a}
+}
+
+func DivideScaler(tup1 Tuple, a float64) Tuple {
+	return Tuple{tup1.X / a, tup1.Y / a, tup1.Z / a, tup1.W / a}
 }

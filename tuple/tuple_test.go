@@ -127,3 +127,26 @@ func TestSubTuple(t *testing.T) {
 		t.Errorf("Error subtracting vectors")
 	}
 }
+
+func TestNegateTuple(t *testing.T) {
+	vector := NegateTuple(Tuple{1, -2, 3, -4})
+	if !EqualTuple(vector, Tuple{-1, 2, -3, 4}) {
+		t.Errorf("Negation failed")
+	}
+}
+
+func TestMultTuple(t *testing.T) {
+	tup := Tuple{1, -2, 3, -4}
+	a := 3.5
+	if !EqualTuple(MultiplyScaler(tup, a), Tuple{3.5, -7, 10.5, -14}) {
+		t.Errorf("Multiplication failed")
+	}
+}
+
+func TestDivTuple(t *testing.T) {
+	tup := Tuple{1, -2, 3, -4}
+	a := 2.0
+	if !EqualTuple(DivideScaler(tup, a), Tuple{0.5, -1, 1.5, -2}) {
+		t.Errorf("Division Failed")
+	}
+}
