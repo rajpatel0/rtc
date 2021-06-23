@@ -178,9 +178,9 @@ func TestNormalize(t *testing.T) {
 	vector1 := Vector(1, 2, 3)
 
 	switch {
-	case Equal(Magnitude(Normalize(vector1)), 1.0):
+	case !Equal(Magnitude(Normalize(vector1)), 1.0):
 		t.Errorf("The magnitude of a normalized vector isn't 1")
-	case EqualTuple(Normalize(vector), Vector(1, 0, 0)):
+	case !EqualTuple(Normalize(vector), Vector(1, 0, 0)):
 		t.Errorf("Normalization of the vector failed")
 	}
 }
