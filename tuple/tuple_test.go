@@ -184,3 +184,21 @@ func TestNormalize(t *testing.T) {
 		t.Errorf("Normalization of the vector failed")
 	}
 }
+
+func TestDot(t *testing.T) {
+	vector := Vector(1, 2, 3)
+	vector1 := Vector(2, 3, 4)
+	if Dot(vector, vector1) != 20.0 {
+		t.Errorf("Dot product failed")
+	}
+}
+
+func TestCross(t *testing.T) {
+	vector := Vector(1, 2, 3)
+	vector1 := Vector(2, 3, 4)
+	cross := Cross(vector, vector1)
+	cross1 := Cross(vector1, vector)
+	if !EqualTuple(cross, Vector(-1, 2, -1)) || !EqualTuple(cross1, Vector(1, -2, 1)) {
+		t.Errorf("cross product failed")
+	}
+}

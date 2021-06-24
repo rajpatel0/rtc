@@ -65,3 +65,14 @@ func Normalize(tup1 Tuple) Tuple {
 	mag := Magnitude(tup1)
 	return DivideScaler(tup1, mag)
 }
+
+func Dot(tup1 Tuple, tup2 Tuple) float64 {
+	return tup1.X*tup2.X + tup1.Y*tup2.Y + tup1.Z*tup2.Z + tup1.W*tup2.W
+}
+
+func Cross(tup1 Tuple, tup2 Tuple) Tuple {
+	x := tup1.Y*tup2.Z - tup1.Z*tup2.Y
+	y := tup1.Z*tup2.X - tup1.X*tup2.Z
+	z := tup1.X*tup2.Y - tup1.Y*tup2.X
+	return Vector(x, y, z)
+}
