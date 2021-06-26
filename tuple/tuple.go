@@ -76,3 +76,14 @@ func Cross(tup1 Tuple, tup2 Tuple) Tuple {
 	z := tup1.X*tup2.Y - tup1.Y*tup2.X
 	return Vector(x, y, z)
 }
+
+func Color(red, green, blue float64) Tuple {
+	return Vector(red, green, blue)
+}
+
+func Hadamard(color1, color2 Tuple) Tuple {
+	r := color1.X * color2.X
+	b := color1.Y * color2.Y
+	g := color1.Z * color2.Z
+	return Vector(r, b, g)
+}

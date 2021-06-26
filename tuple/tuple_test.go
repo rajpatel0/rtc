@@ -202,3 +202,40 @@ func TestCross(t *testing.T) {
 		t.Errorf("cross product failed")
 	}
 }
+
+func TestColor(t *testing.T) {
+	c := Color(-0.5, 0.4, 1.7)
+	if !EqualTuple(c, Vector(-0.5, 0.4, 1.7)) {
+		t.Errorf("Color not correct")
+	}
+}
+
+func TestAddColor(t *testing.T) {
+	c := Color(0.9, 0.6, 0.75)
+	c1 := Color(0.7, 0.1, 0.25)
+	if !EqualTuple(AddTuple(c, c1), Vector(1.6, 0.7, 1.0)) {
+		t.Errorf("Adding colors not correct")
+	}
+}
+func TestSubtractColor(t *testing.T) {
+	c := Color(0.9, 0.6, 0.75)
+	c1 := Color(0.7, 0.1, 0.25)
+	if !EqualTuple(SubTuple(c, c1), Vector(0.2, 0.5, 0.5)) {
+		t.Errorf("Subtracting colors not correct")
+	}
+}
+func TestScaleColor(t *testing.T) {
+	c := Color(0.9, 0.6, 0.75)
+	if !EqualTuple(MultiplyScaler(c, 2), Vector(1.8, 1.2, 1.5)) {
+		t.Errorf("Scaling colors not correct")
+	}
+}
+
+func TestHadamard(t *testing.T) {
+	c := Color(0.9, 0.6, 1.0)
+	c1 := Color(0.7, 0.1, 0.25)
+	if !EqualTuple(Hadamard(c, c1), Vector(0.63, 0.06, 0.25)) {
+		t.Errorf("Hadamard product failed")
+	}
+
+}

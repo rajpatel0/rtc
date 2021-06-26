@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import showcase "github.com/rajpatel0/rtc/showcase"
 
 func main() {
-	fmt.Printf("hello")
+	showcase.Cannon()
 }
