@@ -3,7 +3,7 @@ package showcase
 import (
 	"fmt"
 
-	"github.com/rajpatel0/rtc/tuple"
+	tuple "github.com/rajpatel0/rtc/tools"
 )
 
 type projectile struct {
