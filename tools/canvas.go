@@ -33,7 +33,7 @@ func WritePixel(canvas *Canvas, x, y int, color Tuple) *Canvas {
 }
 
 func PixelAt(canvas *Canvas, x, y int) Tuple {
-	idx := x * canvas.Width * y
+	idx := x + canvas.Width*y
 	return canvas.Pixels[idx]
 }
 

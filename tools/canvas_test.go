@@ -1,8 +1,6 @@
 package tools
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestCanvas(t *testing.T) {
 
@@ -28,25 +26,5 @@ func TestWritingCanvas(t *testing.T) {
 	c = WritePixel(c, 2, 3, red)
 	if PixelAt(c, 2, 3) != red {
 		t.Errorf("Error in setting pixel")
-	}
-}
-
-func TestCanvasToPPM(t *testing.T) {
-	type args struct {
-		canvas *Canvas
-	}
-	tests := []struct {
-		name string
-		args args
-		want string
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := CanvasToPPM(tt.args.canvas); got != tt.want {
-				t.Errorf("CanvasToPPM() = %v, want %v", got, tt.want)
-			}
-		})
 	}
 }
