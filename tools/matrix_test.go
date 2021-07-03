@@ -62,3 +62,31 @@ func TestMatrixInequality(t *testing.T) {
 		t.Errorf("Matrices not equal but passed equality test")
 	}
 }
+
+func TestMatrixMultiply(t *testing.T) {
+	mat := MakeMatrix(4, 4)
+	mat1 := MakeMatrix(4, 4)
+	matResult := MakeMatrix(4, 4)
+	data := [16]float64{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0}
+	data1 := [16]float64{-2.0, 1.0, 2.0, 3.0, 3.0, 2.0, 1.0, -1.0, 4.0, 3.0, 6.0, 5.0, 1.0, 2.0, 7.0, 8.0}
+	dataResult := [16]float64{20.0, 22.0, 50.0, 48.0, 44.0, 54.0, 114.0, 108.0, 40.0, 58.0, 110.0, 102.0, 16.0, 26.0, 46.0, 42.0}
+	mat = SetElements(mat, data[:])
+	mat1 = SetElements(mat1, data1[:])
+	matResult = SetElements(matResult, dataResult[:])
+	if !MatrixEqual(matResult, MatrixMultiply(mat, mat1)) {
+		t.Errorf("Matrix Multiply Failed")
+	}
+
+}
+
+func TestMatrixTupleMultiply(t *testing.T) {
+	mat := MakeMatrix(4, 4)
+	data := [16]float64{1.0, 2.0, 3.0, 4.0, 2.0, 4.0, 4.0, 2.0, 8.0, 6.0, 4.0, 1.0, 0.0, 0.0, 0.0, 1.0}
+	mat = SetElements(mat, data[:])
+	tuple := Point(1, 2, 3)
+
+	outPutTuple := Point(18, 24, 33)
+	if !EqualTuple(outPutTuple, MatrixTupleMultiply(mat, tuple)) {
+		t.Errorf("Matrix Tuple Multiply Failed")
+	}
+}
