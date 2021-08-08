@@ -10,6 +10,10 @@ func MakeMatrix(row, column int) *Matrix {
 	return &Matrix{Row: row, Column: column, Data: make([]float64, row*column)}
 }
 
+func MakeIdentity(row, column int) *Matrix {
+	return setIdentity(&Matrix{Row: row, Column: column, Data: make([]float64, row*column)})
+}
+
 func SetElements(mat *Matrix, elems []float64) *Matrix {
 	rows := mat.Row
 	columns := mat.Column
@@ -18,6 +22,22 @@ func SetElements(mat *Matrix, elems []float64) *Matrix {
 		mat.Data[i] = elems[i]
 	}
 	return mat
+}
+
+func setIdentity(mat *Matrix) *Matrix {
+	rows := mat.Row
+	columns := mat.Column
+	for i := 0; i < rows; i++ {
+		for j := 0; j < columns; j++ {
+			if i == j {
+				mat.Data[i*columns+j] = 1.0
+			} else {
+				mat.Data[i*columns+j] = 0.0
+			}
+		}
+	}
+	return mat
+
 }
 
 func SetElement(mat *Matrix, row, column int, elem float64) *Matrix {
@@ -72,4 +92,14 @@ func MatrixTupleMultiply(mat *Matrix, tup Tuple) Tuple {
 	tupMat = SetElements(tupMat, data[:])
 	outPutTuple := MatrixMultiply(mat, tupMat)
 	return Tuple{X: outPutTuple.Data[0], Y: outPutTuple.Data[1], Z: outPutTuple.Data[2], W: outPutTuple.Data[3]}
+}
+
+func InvertMatrix(mat *Matrix) *Matrix {
+	invertedMat := MakeMatrix(mat.Row, mat.Column)
+	for i := 0; i < mat.Row; i++ {
+		for j := 0; j < mat.Column; j++ {
+			invertedMat.Data[i*mat.Column+j] = mat.Data[j*mat.Row+i]
+		}
+	}
+	return invertedMat
 }

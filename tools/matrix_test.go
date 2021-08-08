@@ -90,3 +90,29 @@ func TestMatrixTupleMultiply(t *testing.T) {
 		t.Errorf("Matrix Tuple Multiply Failed")
 	}
 }
+
+func TestMatrixIdentityMultiply(t *testing.T) {
+	mat := MakeMatrix(4, 4)
+	data := [16]float64{1.0, 2.0, 3.0, 4.0, 2.0, 4.0, 4.0, 2.0, 8.0, 6.0, 4.0, 1.0, 0.0, 0.0, 0.0, 1.0}
+	mat = SetElements(mat, data[:])
+	idMat := MakeIdentity(4, 4)
+	if !MatrixEqual(mat, MatrixMultiply(mat, idMat)) {
+		t.Errorf("Identity matrix multiplication failed")
+	}
+}
+
+func TestMatrixTranspose(t *testing.T) {
+	mat := MakeMatrix(4, 4)
+	transposeMat := MakeMatrix(4, 4)
+	data := [16]float64{0.0, 9.0, 3.0, 0.0, 9.0, 8.0, 0.0, 8.0, 1.0, 8.0, 5.0, 3.0, 0.0, 0.0, 5.0, 8.0}
+	transposeData := [16]float64{0.0, 9.0, 1.0, 0.0, 9.0, 8.0, 8.0, 0.0, 3.0, 0.0, 5.0, 5.0, 0.0, 8.0, 3.0, 8.0}
+	mat = SetElements(mat, data[:])
+	transposeMat = SetElements(transposeMat, transposeData[:])
+	idMat := MakeIdentity(4, 4)
+	switch {
+	case !MatrixEqual(transposeMat, InvertMatrix(mat)):
+		t.Errorf("Failed inversion of matrix")
+	case !MatrixEqual(idMat, InvertMatrix(idMat)):
+		t.Errorf("Failed inversion of identity")
+	}
+}
